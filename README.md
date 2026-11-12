@@ -1,83 +1,142 @@
-# Task 4: Corporate Financial & Profitability Performance Dashboard
+# Datheon Data Analytics & Power BI Internship
 
-## Project Overview
+Welcome to my **Data Analytics & Power BI Internship Project Portfolio**. This repository contains four projects completed as part of the Datheon internship, demonstrating practical skills in data analysis, data visualization, business intelligence, and interactive dashboard development.
 
-This project analyzes the Microsoft Financial Sample dataset using Power
-BI. The dashboard presents sales, profit, discounts, cost of goods sold
-(COGS), product performance, country performance, customer segments,
-monthly trends, and an interactive sales-growth scenario.
+## 📌 Project Overview
 
-## Dataset
+| Task | Project Name | Tools Used |
+|---|---|---|
+| Task 1 | Superstore Retail Sales – Exploratory Data Analysis | Python, Pandas, Jupyter Notebook |
+| Task 2 | Superstore Sales Executive Dashboard | Power BI, DAX |
+| Task 3 | Customer Cohort & Churn Analytics | Python, Pandas, Power BI, DAX |
+| Task 4 | Corporate Financial & Profitability Performance Dashboard | Excel, Power Query, Power BI, DAX |
 
--   **Source file:** `financial_sample.xlsx`
--   **Worksheet:** `Sheet1`
--   **Records:** 700
--   **Period covered:** 2013--2014
--   **Key fields:** Segment, Country, Product, Discount Band, Units
-    Sold, Manufacturing Price, Sale Price, Gross Sales, Discounts,
-    Sales, COGS, Profit, Date, Month Number, Month Name, and Year.
+---
 
-Blank values in `Discount Band` were labelled `Unknown` so that records
-were retained.
+## 📊 Task 1: Superstore Retail Sales – Exploratory Data Analysis
 
-## Dashboard Features
+**Objective:** Analyze retail sales data to identify business trends, sales patterns, and profitability insights.
 
--   KPI cards for Total Sales, Total Profit, Total Gross Sales, Total
-    COGS, Total Discounts, and Profit Margin.
--   Yearly Sales & Profit Performance.
--   Sales Performance by Country.
--   Sales by Product.
--   Sales & Profit by Customer Segment.
--   Monthly Sales Trend.
--   Sales & Profit by Discount Band.
--   Interactive slicers for Year, Country, Product, and Segment.
--   A What-if `Sales Growth %` parameter ranging from -20% to +20%.
+**Work Completed:**
+- Data loading and exploration.
+- Data cleaning and preprocessing.
+- Sales and profit analysis.
+- Category and regional performance analysis.
+- Business insights using Python.
 
-## Key DAX Measures
+**Deliverable:** Jupyter Notebook containing the exploratory data analysis.
 
-The report includes measures for: - Total Sales, Total Profit, Total
-Gross Sales, Total Discounts, and Total COGS. - Total Units Sold and
-Total Transactions. - Profit Margin, COGS Ratio, Discount Rate, and
-Gross Profit Margin. - Scenario Sales, Scenario Profit, Sales Variance,
-and Sales Variance %.
+## 📈 Task 2: Superstore Sales Executive Dashboard
 
-### Scenario Analysis Assumption
+**Objective:** Develop an interactive Power BI dashboard to monitor retail sales and profitability.
 
-Scenario Sales applies the selected growth rate to current Total Sales.
-Scenario Profit applies the same growth rate to current Total Profit,
-which assumes the current profit margin remains constant. This is a
-what-if illustration, not a statistical forecast.
+**Dashboard Features:**
+- Total Sales KPI.
+- Total Profit KPI.
+- Total Orders KPI.
+- Profit Margin KPI.
+- Yearly Sales Analysis.
+- Profit by Region.
+- Sales by Category.
+- Top 10 Products.
+- Interactive slicers for Region, Category, Segment, and Order Date.
 
-## Important Data Notes
+**Deliverables:** Power BI Dashboard, PDF Export, Dashboard Screenshot, and Dataset.
 
--   The source dataset covers 2013--2014; the monthly trend reflects
-    those historical records.
--   The dataset does not provide a separate budget or target field.
-    Sales Variance is therefore calculated against actual sales using
-    the user-selected what-if growth scenario, not against an externally
-    supplied budget.
--   `Total Sales` is the net sales field after discounts. Gross Sales
-    and Discounts are shown separately.
--   The `Gross Profit` measure in this report is calculated as net Sales
-    minus COGS.
+## 👥 Task 3: Customer Cohort & Churn Analytics
 
-## Tools Used
+**Objective:** Analyze customer churn patterns and identify high-risk customer segments to support retention strategies.
 
--   Microsoft Power BI Desktop
--   Power Query for data preparation
--   DAX for measures and scenario calculations
--   Microsoft Excel (`.xlsx`) as the source dataset
+**Work Completed:**
+- Customer data cleaning and preprocessing.
+- Overall churn and retention analysis.
+- Tenure-based customer segmentation.
+- Contract-wise churn analysis.
+- Payment method churn analysis.
+- High-risk customer segment identification.
+- Retention recommendations.
 
-## Deliverables
+**Key Findings:**
+- Total Customers: 7,043
+- Churned Customers: 1,869
+- Churn Rate: 26.54%
+- Retention Rate: 73.46%
 
--   Power BI report:
-    `Task4_Corporate_Financial_Performance_Dashboard.pbix`
--   PDF export: `Task4_Corporate_Financial_Performance_Dashboard.pdf`
--   Source dataset: `financial_sample.xlsx`
+**Dashboard Features:**
+- Customer and churn KPI cards.
+- Churn by Contract.
+- Churn by Payment Method.
+- Churn and Retention by Tenure Cohort.
+- Contract and Payment Method Heatmap.
+- Interactive slicers.
 
-## Conclusion
+**Deliverables:** Python Notebook, Cleaned Dataset, Analysis Outputs, Power BI Dashboard, PDF Export, and Dashboard Screenshot.
 
-The dashboard provides an interactive view of financial performance
-across time, countries, products, and customer segments. The What-if
-parameter allows users to explore the impact of different sales-growth
-assumptions on projected sales and profit.
+## 💰 Task 4: Corporate Financial & Profitability Performance Dashboard
+
+**Objective:** Analyze corporate financial performance through sales, profit, discounts, costs, and scenario-based analysis.
+
+**Dashboard Features:**
+- Total Sales.
+- Total Profit.
+- Total Gross Sales.
+- Total Cost of Goods Sold (COGS).
+- Total Discounts.
+- Profit Margin.
+- Yearly Sales and Profit Performance.
+- Sales Performance by Country.
+- Sales by Product.
+- Sales and Profit by Customer Segment.
+- Monthly Sales Trend.
+- Sales and Profit by Discount Band.
+- Interactive slicers for Year, Country, Product, and Segment.
+- What-if Sales Growth Scenario Analysis.
+
+**Scenario Analysis:**
+- Sales Growth Parameter: -20% to +20%.
+- Scenario Sales.
+- Scenario Profit.
+- Sales Variance.
+- Sales Variance Percentage.
+
+The scenario analysis demonstrates how different sales-growth assumptions affect projected sales and profit, assuming the current profit margin remains constant.
+
+**Deliverables:** Power BI Dashboard, PDF Export, Dashboard Screenshot, and Supporting Dataset.
+
+---
+
+## 🛠️ Tools & Technologies
+
+- **Python** – Data analysis and preprocessing.
+- **Pandas** – Data manipulation and cleaning.
+- **Jupyter Notebook / Google Colab** – Python development.
+- **Microsoft Excel** – Dataset handling.
+- **Power Query** – Data transformation.
+- **Microsoft Power BI** – Interactive dashboards and visualizations.
+- **DAX** – Measures, KPIs, and calculations.
+- **GitHub** – Project documentation and version control.
+
+## 🎯 Key Skills Demonstrated
+
+- Data Cleaning and Transformation
+- Exploratory Data Analysis (EDA)
+- Data Visualization
+- Business Intelligence
+- Dashboard Development
+- KPI Development
+- Customer Churn Analysis
+- Financial Performance Analysis
+- DAX Measures and Calculated Columns
+- Scenario Analysis
+- Business Insights and Recommendations
+
+## 📁 Repository Contents
+
+This repository contains project notebooks, Power BI files (`.pbix`), PDF dashboard exports, screenshots, datasets, and supporting analysis files for the four internship tasks.
+
+## 👩‍💻 Author
+
+**Manaswi**
+
+**Datheon Data Analytics & Power BI Internship**
+
