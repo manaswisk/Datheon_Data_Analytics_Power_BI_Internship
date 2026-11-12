@@ -1,118 +1,161 @@
-# Superstore Sales & Profit Executive Dashboard
+# Task 3: Customer Cohort \& Churn Analytics
 
 ## Project Overview
 
-This project presents an interactive Power BI dashboard built using the
-Superstore Retail Sales dataset. It provides an executive-level view of
-sales performance, profitability, regional results, product performance,
-and customer segments.
+This project analyzes customer churn and retention patterns using the
+IBM Telco Customer Churn dataset. The goal is to identify customer
+groups with higher churn rates and recommend practical actions to
+improve customer retention.
+
+The analysis was completed using Python in Google Colab and an
+interactive dashboard in Microsoft Power BI.
 
 ## Objectives
 
--   Summarize overall sales, profit, order volume, and profit margin.
--   Explore sales performance over time.
--   Compare profit across regions.
--   Analyze sales across product categories.
--   Highlight the top 10 products by sales.
--   Enable interactive exploration using report slicers.
-
-## Tools & Technologies
-
--   Microsoft Power BI Desktop
--   Power Query for data preparation
--   DAX (Data Analysis Expressions) for measures
--   CSV dataset
+* Measure overall customer churn and retention rates.
+* Segment customers by tenure groups.
+* Compare churn across contract types and payment methods.
+* Identify high-risk customer segments.
+* Present findings through charts, a churn heatmap, and a Power BI
+dashboard.
+* Recommend data-informed customer retention strategies.
 
 ## Dataset
 
-**File:** `superstore_sales.csv`
+* **Dataset:** `telco\_customer\_churn.csv`
+* **Source:** [Datheon -- Telco Customer Churn
+Dataset](https://www.datheon.in/datasets/telco_customer_churn.csv)
+* **Records:** 7,043 customers
+* **Columns:** 21
 
-The report uses the valid Superstore sales records after removing
-appended non-sales rows during data preparation. The expected cleaned
-dataset contains 9,994 sales rows and 21 columns.
+The dataset includes customer demographics, subscribed services,
+contract details, payment methods, tenure, monthly charges, total
+charges, and churn status.
 
-The dataset's monetary values are presented in **US dollars (USD, \$)**.
+## Tools and Technologies
 
-## Dashboard Contents
+* Python
+* Pandas and NumPy
+* Plotly
+* Google Colab
+* Microsoft Power BI Desktop
+* DAX
 
-### Key Performance Indicators
+## Methodology
 
--   Total Sales
--   Total Profit
--   Total Orders
--   Profit Margin
+1. Loaded the Telco Customer Churn CSV dataset into Pandas.
+2. Inspected the dataset structure, data types, missing values, and
+duplicate rows.
+3. Converted `TotalCharges` to numeric and handled blank values as
+zero.
+4. Calculated baseline churn and retention rates.
+5. Grouped customers into tenure bands: 0--12, 13--24, 25--36, 37--48,
+49--60, and 61--72 months.
+6. Analyzed churn by contract type and payment method.
+7. Compared churn rates across contract and payment method
+combinations.
+8. Created visualizations and exported analysis tables for reporting
+and dashboard use.
 
-### Visual Analysis
+**Cohort interpretation:** This dataset is a one-time customer snapshot.
+The tenure groups in this project are tenure-based segments, not true
+acquisition-month cohorts or month-by-month retention curves.
 
--   Sales performance over time
--   Profit by Region
--   Sales by Category
--   Top 10 Products by Sales
+## Key Findings
 
-### Interactive Filters
+Metric / Segment                                                Result
 
--   Region
--   Category
--   Segment
--   Order Date
+\---
 
-## DAX Measures
+Total customers                                                  7,043
+Churned customers                                                1,869
+Retained customers                                               5,174
+Overall churn rate                                              26.54%
+Overall retention rate                                          73.46%
+Month-to-month contract churn                                   42.71%
+One-year contract churn                                         11.27%
+Two-year contract churn                                          2.83%
+Electronic-check payment churn                                  45.29%
+Highest-risk combination: month-to-month + electronic check     53.73%
 
-``` dax
-Total Sales = SUM('superstore_sales'[Sales])
+### Tenure-Based Churn Pattern
 
-Total Profit = SUM('superstore_sales'[Profit])
+Churn was highest among customers with 0--12 months of tenure
+(approximately 47.4%) and declined across longer-tenure groups, reaching
+approximately 6.6% for customers with 61--72 months of tenure.
 
-Total Orders = DISTINCTCOUNT('superstore_sales'[Order ID])
+## Power BI Dashboard
 
-Profit Margin = DIVIDE([Total Profit], [Total Sales], 0)
+The Power BI report includes:
 
-Total Quantity = SUM('superstore_sales'[Quantity])
+* KPI cards for Total Customers, Churned Customers, Churn Rate, and
+Retention Rate.
+* Customer churn rate by contract type.
+* Customer churn rate by payment method.
+* Customer churn rate by tenure cohort.
+* Customer retention rate by tenure cohort.
+* A matrix heatmap comparing churn by contract and payment method.
+* Slicers for Contract, Payment Method, Gender, and Tenure Cohort.
 
-Average Order Value = DIVIDE([Total Sales], [Total Orders], 0)
+## Strategic Retention Recommendations
 
-Total Customers = DISTINCTCOUNT('superstore_sales'[Customer ID])
-```
+1. **Improve early customer engagement:** Strengthen onboarding,
+service education, and first-year support because churn is highest
+among newer customers.
+2. **Encourage longer contracts:** Test appropriate annual-plan
+incentives and loyalty benefits for month-to-month customers.
+3. **Investigate electronic-check churn:** Review the payment
+experience and customer feedback, and make convenient automatic
+payment options easy to adopt.
+4. **Prioritize high-risk segments:** Focus retention outreach on
+month-to-month customers using electronic checks, while evaluating
+individual customer needs before offering incentives.
+5. **Monitor retention performance:** Track churn and retention metrics
+regularly and compare results across customer segments.
 
-## Validation Benchmarks
-
-With all filters cleared and all 9,994 valid records included, the
-expected results are:
-
-  KPI               Expected value
-  --------------- ----------------
-  Total Sales       \$2,297,200.86
-  Total Profit        \$286,397.02
-  Total Orders               5,009
-  Profit Margin             12.47%
+These findings show associations in the dataset; they do not establish
+that contract type or payment method causes churn.
 
 ## Project Files
 
-Place these files in the project folder:
+The project folder is intended to contain these deliverables (file names
+may vary slightly depending on saved exports):
 
--   `Superstore_Dashboard.pbix` --- editable Power BI report
--   `Superstore_Dashboard.pdf` --- exported dashboard report
--   `dashboard_screenshot.png` --- dashboard preview image
--   `superstore_sales.csv` --- source dataset
--   `README.md` --- project documentation
+* `Task3\_Customer\_Cohort\_Churn\_Analysis.ipynb` --- Python analysis
+notebook.
+* `Task3\_Customer\_Churn\_Dashboard.pbix` --- Power BI report.
+* `Task3\_Customer\_Churn\_Dashboard.pdf` --- exported dashboard report.
+* `Task3\_Dashboard\_Screenshot.png` --- dashboard screenshot.
+* `telco\_customer\_churn.csv` --- source dataset.
+* `Task3\_Analysis\_Outputs.zip` --- exported analysis tables and
+cleaned dataset.
+* `README.md` --- project documentation.
+
+The analysis ZIP contains the cleaned dataset and exported tables for
+tenure cohort, contract churn, payment churn, high-risk segments,
+retention recommendations, and heatmap data.
 
 ## How to Use
 
-1.  Open `Superstore_Dashboard.pbix` in Power BI Desktop.
-2.  If prompted, locate `superstore_sales.csv` and update the data
-    source path.
-3.  Select **Refresh** if needed.
-4.  Use the Region, Category, Segment, and Order Date slicers to explore
-    the report.
-5.  Clear slicer selections to return to the full-dataset KPI values.
+1. Download or clone the project files.
+2. Open the `.ipynb` notebook in Google Colab or Jupyter.
+3. Run the notebook cells in order. The notebook loads the source CSV
+from the dataset URL shown in the notebook.
+4. Open the `.pbix` file in Power BI Desktop to explore the dashboard
+and slicers.
+5. Refer to the PDF export and screenshot for a static view of the
+dashboard.
 
-## Notes
+## Conclusion
 
--   KPI validation values are expected values for the unfiltered
-    dataset; selected slicers will change the results.
--   The report is intended for sales and profitability analysis and
-    executive-level exploration.
+This project demonstrates an end-to-end customer churn analysis
+workflow, from data inspection and preprocessing through segmentation,
+visualization, and business recommendations. The results highlight the
+importance of early customer engagement, contract strategy, and payment
+experience in customer retention analysis.
 
-## Author
+\---
 
-Data Analytics Internship Project
+**Project:** Data Analytics Internship -- Task 3  
+**Topic:** Customer Cohort \& Churn Analytics
+
