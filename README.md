@@ -1,161 +1,83 @@
-# Task 3: Customer Cohort \& Churn Analytics
+# Task 4: Corporate Financial & Profitability Performance Dashboard
 
 ## Project Overview
 
-This project analyzes customer churn and retention patterns using the
-IBM Telco Customer Churn dataset. The goal is to identify customer
-groups with higher churn rates and recommend practical actions to
-improve customer retention.
-
-The analysis was completed using Python in Google Colab and an
-interactive dashboard in Microsoft Power BI.
-
-## Objectives
-
-* Measure overall customer churn and retention rates.
-* Segment customers by tenure groups.
-* Compare churn across contract types and payment methods.
-* Identify high-risk customer segments.
-* Present findings through charts, a churn heatmap, and a Power BI
-dashboard.
-* Recommend data-informed customer retention strategies.
+This project analyzes the Microsoft Financial Sample dataset using Power
+BI. The dashboard presents sales, profit, discounts, cost of goods sold
+(COGS), product performance, country performance, customer segments,
+monthly trends, and an interactive sales-growth scenario.
 
 ## Dataset
 
-* **Dataset:** `telco\_customer\_churn.csv`
-* **Source:** [Datheon -- Telco Customer Churn
-Dataset](https://www.datheon.in/datasets/telco_customer_churn.csv)
-* **Records:** 7,043 customers
-* **Columns:** 21
+-   **Source file:** `financial_sample.xlsx`
+-   **Worksheet:** `Sheet1`
+-   **Records:** 700
+-   **Period covered:** 2013--2014
+-   **Key fields:** Segment, Country, Product, Discount Band, Units
+    Sold, Manufacturing Price, Sale Price, Gross Sales, Discounts,
+    Sales, COGS, Profit, Date, Month Number, Month Name, and Year.
 
-The dataset includes customer demographics, subscribed services,
-contract details, payment methods, tenure, monthly charges, total
-charges, and churn status.
+Blank values in `Discount Band` were labelled `Unknown` so that records
+were retained.
 
-## Tools and Technologies
+## Dashboard Features
 
-* Python
-* Pandas and NumPy
-* Plotly
-* Google Colab
-* Microsoft Power BI Desktop
-* DAX
+-   KPI cards for Total Sales, Total Profit, Total Gross Sales, Total
+    COGS, Total Discounts, and Profit Margin.
+-   Yearly Sales & Profit Performance.
+-   Sales Performance by Country.
+-   Sales by Product.
+-   Sales & Profit by Customer Segment.
+-   Monthly Sales Trend.
+-   Sales & Profit by Discount Band.
+-   Interactive slicers for Year, Country, Product, and Segment.
+-   A What-if `Sales Growth %` parameter ranging from -20% to +20%.
 
-## Methodology
+## Key DAX Measures
 
-1. Loaded the Telco Customer Churn CSV dataset into Pandas.
-2. Inspected the dataset structure, data types, missing values, and
-duplicate rows.
-3. Converted `TotalCharges` to numeric and handled blank values as
-zero.
-4. Calculated baseline churn and retention rates.
-5. Grouped customers into tenure bands: 0--12, 13--24, 25--36, 37--48,
-49--60, and 61--72 months.
-6. Analyzed churn by contract type and payment method.
-7. Compared churn rates across contract and payment method
-combinations.
-8. Created visualizations and exported analysis tables for reporting
-and dashboard use.
+The report includes measures for: - Total Sales, Total Profit, Total
+Gross Sales, Total Discounts, and Total COGS. - Total Units Sold and
+Total Transactions. - Profit Margin, COGS Ratio, Discount Rate, and
+Gross Profit Margin. - Scenario Sales, Scenario Profit, Sales Variance,
+and Sales Variance %.
 
-**Cohort interpretation:** This dataset is a one-time customer snapshot.
-The tenure groups in this project are tenure-based segments, not true
-acquisition-month cohorts or month-by-month retention curves.
+### Scenario Analysis Assumption
 
-## Key Findings
+Scenario Sales applies the selected growth rate to current Total Sales.
+Scenario Profit applies the same growth rate to current Total Profit,
+which assumes the current profit margin remains constant. This is a
+what-if illustration, not a statistical forecast.
 
-Metric / Segment                                                Result
+## Important Data Notes
 
-\---
+-   The source dataset covers 2013--2014; the monthly trend reflects
+    those historical records.
+-   The dataset does not provide a separate budget or target field.
+    Sales Variance is therefore calculated against actual sales using
+    the user-selected what-if growth scenario, not against an externally
+    supplied budget.
+-   `Total Sales` is the net sales field after discounts. Gross Sales
+    and Discounts are shown separately.
+-   The `Gross Profit` measure in this report is calculated as net Sales
+    minus COGS.
 
-Total customers                                                  7,043
-Churned customers                                                1,869
-Retained customers                                               5,174
-Overall churn rate                                              26.54%
-Overall retention rate                                          73.46%
-Month-to-month contract churn                                   42.71%
-One-year contract churn                                         11.27%
-Two-year contract churn                                          2.83%
-Electronic-check payment churn                                  45.29%
-Highest-risk combination: month-to-month + electronic check     53.73%
+## Tools Used
 
-### Tenure-Based Churn Pattern
+-   Microsoft Power BI Desktop
+-   Power Query for data preparation
+-   DAX for measures and scenario calculations
+-   Microsoft Excel (`.xlsx`) as the source dataset
 
-Churn was highest among customers with 0--12 months of tenure
-(approximately 47.4%) and declined across longer-tenure groups, reaching
-approximately 6.6% for customers with 61--72 months of tenure.
+## Deliverables
 
-## Power BI Dashboard
-
-The Power BI report includes:
-
-* KPI cards for Total Customers, Churned Customers, Churn Rate, and
-Retention Rate.
-* Customer churn rate by contract type.
-* Customer churn rate by payment method.
-* Customer churn rate by tenure cohort.
-* Customer retention rate by tenure cohort.
-* A matrix heatmap comparing churn by contract and payment method.
-* Slicers for Contract, Payment Method, Gender, and Tenure Cohort.
-
-## Strategic Retention Recommendations
-
-1. **Improve early customer engagement:** Strengthen onboarding,
-service education, and first-year support because churn is highest
-among newer customers.
-2. **Encourage longer contracts:** Test appropriate annual-plan
-incentives and loyalty benefits for month-to-month customers.
-3. **Investigate electronic-check churn:** Review the payment
-experience and customer feedback, and make convenient automatic
-payment options easy to adopt.
-4. **Prioritize high-risk segments:** Focus retention outreach on
-month-to-month customers using electronic checks, while evaluating
-individual customer needs before offering incentives.
-5. **Monitor retention performance:** Track churn and retention metrics
-regularly and compare results across customer segments.
-
-These findings show associations in the dataset; they do not establish
-that contract type or payment method causes churn.
-
-## Project Files
-
-The project folder is intended to contain these deliverables (file names
-may vary slightly depending on saved exports):
-
-* `Task3\_Customer\_Cohort\_Churn\_Analysis.ipynb` --- Python analysis
-notebook.
-* `Task3\_Customer\_Churn\_Dashboard.pbix` --- Power BI report.
-* `Task3\_Customer\_Churn\_Dashboard.pdf` --- exported dashboard report.
-* `Task3\_Dashboard\_Screenshot.png` --- dashboard screenshot.
-* `telco\_customer\_churn.csv` --- source dataset.
-* `Task3\_Analysis\_Outputs.zip` --- exported analysis tables and
-cleaned dataset.
-* `README.md` --- project documentation.
-
-The analysis ZIP contains the cleaned dataset and exported tables for
-tenure cohort, contract churn, payment churn, high-risk segments,
-retention recommendations, and heatmap data.
-
-## How to Use
-
-1. Download or clone the project files.
-2. Open the `.ipynb` notebook in Google Colab or Jupyter.
-3. Run the notebook cells in order. The notebook loads the source CSV
-from the dataset URL shown in the notebook.
-4. Open the `.pbix` file in Power BI Desktop to explore the dashboard
-and slicers.
-5. Refer to the PDF export and screenshot for a static view of the
-dashboard.
+-   Power BI report:
+    `Task4_Corporate_Financial_Performance_Dashboard.pbix`
+-   PDF export: `Task4_Corporate_Financial_Performance_Dashboard.pdf`
+-   Source dataset: `financial_sample.xlsx`
 
 ## Conclusion
 
-This project demonstrates an end-to-end customer churn analysis
-workflow, from data inspection and preprocessing through segmentation,
-visualization, and business recommendations. The results highlight the
-importance of early customer engagement, contract strategy, and payment
-experience in customer retention analysis.
-
-\---
-
-**Project:** Data Analytics Internship -- Task 3  
-**Topic:** Customer Cohort \& Churn Analytics
-
+The dashboard provides an interactive view of financial performance
+across time, countries, products, and customer segments. The What-if
+parameter allows users to explore the impact of different sales-growth
+assumptions on projected sales and profit.
